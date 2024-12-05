@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
       body: CustomPaint(
         painter: LoginPainter(),
         size: Size.infinite,
-        child: const _LoginFormView(),
+        // child: const _LoginFormView(),
       ),
     );
   }
