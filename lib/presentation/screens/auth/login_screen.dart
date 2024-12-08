@@ -1,4 +1,6 @@
 
+import 'package:chat_ia/presentation/widgets/links/register_link.dart';
+import 'package:chat_ia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chat_ia/presentation/providers/providers.dart';
@@ -21,7 +23,7 @@ class LoginScreen extends ConsumerWidget {
           isDark: isDark
         ),
         size: Size.infinite,
-        // child: const _LoginFormView(),
+        child: const _LoginFormView(),
       ),
     );
   }
@@ -45,15 +47,22 @@ class _LoginFormView extends StatelessWidget {
   }
 }
 
-class _FormView extends StatelessWidget {
+class _FormView extends StatefulWidget {
   const _FormView();
 
+  @override
+  State<_FormView> createState() => _FormViewState();
+}
+
+class _FormViewState extends State<_FormView> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final colors = Theme.of(context).colorScheme;
+    final textStyle = Theme.of(context).textTheme;
     return Container(
       height: size.height*.6,
+      width: double.infinity,
       padding: const EdgeInsets.only(top: 20),
       decoration: BoxDecoration(
         color: colors.surface,
@@ -62,14 +71,56 @@ class _FormView extends StatelessWidget {
           topRight: Radius.circular(30),
         )
       ),
-      child: const Column(
-        children: [
-
-          Text('Iniciar Session'),
-          Divider()
-
-
-        ],
+      child: Form(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+            
+                const SizedBox(height: 15,),
+                Text('Get Started',style: textStyle.titleLarge?.copyWith(color: colors.primary),),
+                const SizedBox(height: 20,),
+                const CustomTextFormField(
+                  label: 'Email',
+                  hintText: 'ejemplo@gmail.com',
+                ),
+            
+                const SizedBox(height: 20,),
+                const CustomTextFormField(
+                  label: 'Password',
+                  hintText: '*********',
+                ),
+                const SizedBox(height: 20,),
+            
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: FilledButton(
+                    onPressed: (){}, 
+                    child: const Text('Sing In')
+                  )
+                ),
+          
+                const SizedBox(height: 10,),
+                TermsAndConditionsCheckbox(
+                  onChanged: (p0) {
+                    
+                  }, 
+                  onTermsTap: () {
+                    
+                  },
+                ),
+          
+          
+                const SingInWith(),
+                const SizedBox(height: 5,),
+                const RegisterLink(),
+                const SizedBox(height: 20,),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

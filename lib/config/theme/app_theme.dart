@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 final appColorsList = <Color>[
   Colors.blue,
@@ -22,7 +24,15 @@ class AppTheme {
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
     colorSchemeSeed: appColorsList[selectedColor],
-    brightness: darkTheme ? Brightness.dark: Brightness.light
+    brightness: darkTheme ? Brightness.dark: Brightness.light,
+    textTheme: GoogleFonts.montserratTextTheme(
+      const TextTheme(
+        titleLarge: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 30
+        )
+      )
+    ),
   );
 
 }
