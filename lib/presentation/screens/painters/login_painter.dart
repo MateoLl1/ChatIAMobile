@@ -4,9 +4,8 @@ class LoginPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blue
-      ..strokeWidth = 10
-      ..style = PaintingStyle.stroke;
+      ..color = Colors.blueAccent
+      ..style = PaintingStyle.fill;
 
     
     // FIGURA AZUL OSCURO ---------------------------
@@ -32,88 +31,12 @@ class LoginPainter extends CustomPainter {
 
     path1.lineTo(0, size.height);
     canvas.drawPath(path1, paint);
-    
-    // CIRCULO DERECHA ARRIBA ----------------
-    path1.reset();
 
-    path1.moveTo(size.width, 0);
-    path1.lineTo(size.width, size.height*.25);
-    path1.arcToPoint(
-      Offset(size.width*.55, 0),
-      radius: Radius.circular(size.width*.5)
-    );
-
-    canvas.drawPath(path1, paint);
-
-
-    // CIRCULO ARRIBA DERECHA
-    path1.reset();
-    paint.color = Colors.white;
-    paint.strokeWidth = 5;
-      
-    path1.moveTo(size.width*.65, size.height*.17);
-    path1.arcToPoint(
-      Offset(size.width*.8, size.height*.17),
-      radius: const Radius.circular(1)
-    );
-    path1.arcToPoint(
-      Offset(size.width*.65, size.height*.17),
-      radius: const Radius.circular(1)
-    );
-
-    canvas.drawPath(path1, paint);
-
-
-    // CIRCULO ARRIBA IZQUIERDA
-    paint.style = PaintingStyle.stroke;
-    path1.reset();
-    path1.moveTo(0, 0);
-    path1.lineTo(size.width*.2, 0);
-    path1.arcToPoint(
-      Offset(0, size.height*.1),
-      radius: Radius.circular(size.width*.1)
-    );
-    path1.lineTo(0, 0);
-
-    canvas.drawPath(path1, paint);
-
-
-    // CIRCULO PEQUEÑO ABAJO IZQUIERDA
-    path1.reset();
-    path1.moveTo(size.width*.1, size.height*.65);
-    path1.arcToPoint(
-      Offset(size.width*.25, size.height*.65),
-      radius: const Radius.circular(1)
-    );
-    path1.arcToPoint(
-      Offset(size.width*.1, size.height*.65),
-      radius: const Radius.circular(1),
-      clockwise: true 
-    );
-
-    canvas.drawPath(path1, paint);
-    path1.reset();
-
-    // CIRCULO GRANDE ABAJO IZQUIERDA
-    path1.reset();
-    path1.moveTo(size.width*.25, size.height*.8);
-    path1.arcToPoint(
-      Offset(size.width*.65, size.height*.8),
-      radius: const Radius.circular(1)
-    );
-    path1.arcToPoint(
-      Offset(size.width*.25, size.height*.8),
-      radius: const Radius.circular(1),
-      clockwise: true 
-    );
-
-    canvas.drawPath(path1, paint);
 
     // FIGURA BLANCA TRANSPARENTE GRANDE
     
     path1.reset();
-    paint.strokeWidth = 5;
-    paint.color = Colors.red;
+    paint.color = Colors.white24;
     path1.moveTo(size.width, 0);
     path1.lineTo(size.width*.55, size.height*.03);
     path1.arcToPoint(
@@ -133,7 +56,7 @@ class LoginPainter extends CustomPainter {
     );
     path1.arcToPoint(
       Offset(size.width*.35, size.height*.6),
-      radius: Radius.circular(size.width*.8),
+      radius: Radius.circular(size.width*.45),
       clockwise: false
     );
     path1.arcToPoint(
@@ -145,8 +68,104 @@ class LoginPainter extends CustomPainter {
       Offset(size.width*.7, size.height),
       radius: Radius.circular(size.width*.2)
     );
+    path1.lineTo(size.width, size.height);
+    path1.lineTo(size.width, 0);
 
     canvas.drawPath(path1, paint);
+    
+    // SEMICIRCULO DERECHA ARRIBA ----------------
+    path1.reset();
+    paint.color = Colors.blueGrey;
+    path1.moveTo(size.width, 0);
+    path1.lineTo(size.width, size.height*.25);
+    path1.arcToPoint(
+      Offset(size.width*.55, 0),
+      radius: Radius.circular(size.width*.5)
+    );
+
+    canvas.drawPath(path1, paint);
+
+
+    // CIRCULO ARRIBA DERECHA
+    path1.reset();
+    paint.shader = const LinearGradient(
+      colors: [Colors.blueAccent, Colors.black],
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
+    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    path1.moveTo(size.width*.67, size.height*.17);
+    path1.arcToPoint(
+      Offset(size.width*.9, size.height*.17),
+      radius: const Radius.circular(1)
+    );
+    path1.arcToPoint(
+      Offset(size.width*.67, size.height*.17),
+      radius: const Radius.circular(1)
+    );
+
+    canvas.drawPath(path1, paint);
+
+
+    // CIRCULO ARRIBA IZQUIERDA
+    path1.reset();
+    path1.moveTo(0, 0);
+    paint.shader = const LinearGradient(
+      colors: [Colors.blueAccent, Colors.black],
+      begin: Alignment.centerRight,
+      end: Alignment.bottomRight,
+    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    path1.lineTo(size.width*.2, 0);
+    path1.arcToPoint(
+      Offset(0, size.height*.1),
+      radius: Radius.circular(size.width*.1)
+    );
+    path1.lineTo(0, 0);
+
+    canvas.drawPath(path1, paint);
+
+
+    // CIRCULO PEQUEÑO ABAJO IZQUIERDA
+    path1.reset();
+    paint.shader = const LinearGradient(
+      colors: [Colors.yellow, Colors.black],
+      begin: Alignment.centerRight,
+      end: Alignment.bottomRight,
+    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    path1.moveTo(size.width*.1, size.height*.65);
+    path1.arcToPoint(
+      Offset(size.width*.25, size.height*.65),
+      radius: const Radius.circular(1)
+    );
+    path1.arcToPoint(
+      Offset(size.width*.1, size.height*.65),
+      radius: const Radius.circular(1),
+      clockwise: true 
+    );
+
+    canvas.drawPath(path1, paint);
+    path1.reset();
+
+    // CIRCULO GRANDE ABAJO IZQUIERDA
+    path1.reset();
+    paint.shader = const SweepGradient(
+      colors: [Colors.red, Colors.yellow],
+      // begin: Alignment.centerRight,
+      // end: Alignment.bottomRight,
+    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    path1.moveTo(size.width*.25, size.height*.8);
+    path1.arcToPoint(
+      Offset(size.width*.65, size.height*.8),
+      radius: const Radius.circular(1)
+    );
+    path1.arcToPoint(
+      Offset(size.width*.25, size.height*.8),
+      radius: const Radius.circular(1),
+      clockwise: true 
+    );
+
+    canvas.drawPath(path1, paint);
+
+    
 
 
 
