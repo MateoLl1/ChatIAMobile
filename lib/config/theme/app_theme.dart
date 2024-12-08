@@ -2,6 +2,12 @@
 
 import 'package:flutter/material.dart';
 
+final appColorsList = <Color>[
+  Colors.blue,
+  Colors.redAccent,
+  Colors.orangeAccent,
+];
+
 class AppTheme {
 
   final int selectedColor;
@@ -15,6 +21,7 @@ class AppTheme {
 
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
+    colorSchemeSeed: appColorsList[selectedColor],
     brightness: darkTheme ? Brightness.dark: Brightness.light
   );
 

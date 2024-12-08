@@ -1,19 +1,25 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:chat_ia/presentation/providers/providers.dart';
 import 'package:chat_ia/presentation/screens/painters/painters.dart';
 
 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ref) {
     final colors = Theme.of(context).colorScheme;
+    final isDark = ref.watch(darkThemeProvider);
     return Scaffold(
-      backgroundColor: colors.onSurface,
+      backgroundColor: isDark ? colors.onSurface: colors.surface,
       body: CustomPaint(
-        painter: LoginPainter(),
+        painter: LoginPainter(
+          colorBase: colors.primary,
+          isDark: isDark
+        ),
         size: Size.infinite,
         // child: const _LoginFormView(),
       ),

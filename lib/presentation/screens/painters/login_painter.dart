@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class LoginPainter extends CustomPainter {
+  final Color colorBase;
+  final bool isDark;
+
+  LoginPainter({super.repaint, required this.colorBase,required this.isDark});
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blueAccent
+      ..color = colorBase
       ..style = PaintingStyle.fill;
 
     
@@ -36,7 +40,7 @@ class LoginPainter extends CustomPainter {
     // FIGURA BLANCA TRANSPARENTE GRANDE
     
     path1.reset();
-    paint.color = Colors.white24;
+    paint.color = isDark ? Colors.white24 : Colors.black12;
     path1.moveTo(size.width, 0);
     path1.lineTo(size.width*.55, size.height*.03);
     path1.arcToPoint(
@@ -75,7 +79,7 @@ class LoginPainter extends CustomPainter {
     
     // SEMICIRCULO DERECHA ARRIBA ----------------
     path1.reset();
-    paint.color = Colors.blueGrey;
+    paint.color = colorBase;
     path1.moveTo(size.width, 0);
     path1.lineTo(size.width, size.height*.25);
     path1.arcToPoint(
@@ -88,11 +92,8 @@ class LoginPainter extends CustomPainter {
 
     // CIRCULO ARRIBA DERECHA
     path1.reset();
-    paint.shader = const LinearGradient(
-      colors: [Colors.blueAccent, Colors.black],
-      begin: Alignment.centerRight,
-      end: Alignment.centerLeft,
-    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    paint.color = isDark ? Colors.black : Colors.white;
+    // paint.color = colorBase.withOpacity(.2);
     path1.moveTo(size.width*.67, size.height*.17);
     path1.arcToPoint(
       Offset(size.width*.9, size.height*.17),
@@ -109,14 +110,10 @@ class LoginPainter extends CustomPainter {
     // CIRCULO ARRIBA IZQUIERDA
     path1.reset();
     path1.moveTo(0, 0);
-    paint.shader = const LinearGradient(
-      colors: [Colors.blueAccent, Colors.black],
-      begin: Alignment.centerRight,
-      end: Alignment.bottomRight,
-    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
-    path1.lineTo(size.width*.2, 0);
+    paint.color = !isDark ? Colors.black : Colors.white;
+    path1.lineTo(size.width*.25, 0);
     path1.arcToPoint(
-      Offset(0, size.height*.1),
+      Offset(0, size.height*.15),
       radius: Radius.circular(size.width*.1)
     );
     path1.lineTo(0, 0);
@@ -126,11 +123,7 @@ class LoginPainter extends CustomPainter {
 
     // CIRCULO PEQUEÑO ABAJO IZQUIERDA
     path1.reset();
-    paint.shader = const LinearGradient(
-      colors: [Colors.yellow, Colors.black],
-      begin: Alignment.centerRight,
-      end: Alignment.bottomRight,
-    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    paint.color = Colors.black54;
     path1.moveTo(size.width*.1, size.height*.65);
     path1.arcToPoint(
       Offset(size.width*.25, size.height*.65),
@@ -147,11 +140,7 @@ class LoginPainter extends CustomPainter {
 
     // CIRCULO GRANDE ABAJO IZQUIERDA
     path1.reset();
-    paint.shader = const SweepGradient(
-      colors: [Colors.red, Colors.yellow],
-      // begin: Alignment.centerRight,
-      // end: Alignment.bottomRight,
-    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    paint.color = !isDark ? Colors.black : Colors.white;
     path1.moveTo(size.width*.25, size.height*.8);
     path1.arcToPoint(
       Offset(size.width*.65, size.height*.8),
