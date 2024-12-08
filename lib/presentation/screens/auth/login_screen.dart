@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.onSurface,
       body: CustomPaint(
-        painter: LoginPainter(),
+        painter: LoginPainter(color: Colors.blue),
         size: Size.infinite,
         // child: const _LoginFormView(),
       ),
