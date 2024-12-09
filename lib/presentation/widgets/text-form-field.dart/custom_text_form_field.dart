@@ -26,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         border: border,
         hintText: hintText,
-        isDense: false,
+        isDense: true,
         label: Text(label)
       ),
       onTapOutside: (event) => focusNode.unfocus(),

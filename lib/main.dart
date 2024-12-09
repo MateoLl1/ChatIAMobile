@@ -9,10 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkSystem = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return MaterialApp.router(
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 0, darkTheme: false).getTheme(),
+      theme: AppTheme(selectedColor: 0, darkTheme: darkSystem).getTheme(),
       title: 'Chat IA',
     );
   }
