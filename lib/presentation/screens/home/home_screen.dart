@@ -1,3 +1,4 @@
+import 'package:chat_ia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
+      drawer: const ChatDrawer(),
       appBar: AppBar(
         title: const Text('ChatIA'),
         centerTitle: true,

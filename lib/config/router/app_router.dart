@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:chat_ia/presentation/screens/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',

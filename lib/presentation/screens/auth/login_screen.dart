@@ -118,7 +118,7 @@ class _FormViewState extends State<_FormView> {
                   width: double.infinity,
                   height: 50,
                   child: FilledButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/home'),
                     child: const Text('Sing In'),
                   ),
                 ),

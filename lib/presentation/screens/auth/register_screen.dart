@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chat_ia/presentation/widgets/widgets.dart';
 import 'package:chat_ia/presentation/providers/providers.dart';
@@ -123,7 +124,7 @@ class _FormViewState extends State<_FormView> {
                   width: double.infinity,
                   height: 50,
                   child: FilledButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/home'),
                     child: const Text('Sing Up'),
                   ),
                 ),
